@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import vim
 import os
 import re
@@ -22,9 +23,9 @@ def ENMLtoText(contentENML):
                 for c in sections[0].contents:
                     content = u''.join((content, c))
                 content = re.sub(r' *\n', os.linesep, content)
-                content = content.replace('&lt;', '<')
-                content = content.replace('&gt;', '>')
-                content = content.replace('&amp;', '&')
+                # content = content.replace('&lt;', '<')
+                # content = content.replace('&gt;', '>')
+                # content = content.replace('&amp;', '&')
                 return content.encode('utf-8')
         except:
             pass
@@ -42,9 +43,9 @@ def textToENML(content):
     if format != 'vim-default' and format != 'pre':
         return Editor.textToENML(content, True, format) 
 
-    content = content.replace('<', '&lt;')
-    content = content.replace('>', '&gt;')
-    content = content.replace('&', '&amp;')
+    # content = content.replace('<', '&lt;')
+    # content = content.replace('>', '&gt;')
+    # content = content.replace('&', '&amp;')
     content = unicode(content, "utf-8")
     contentHTML = u''.join(('<pre>', content, '</pre>')).encode("utf-8")
 
